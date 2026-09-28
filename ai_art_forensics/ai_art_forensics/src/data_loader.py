@@ -89,8 +89,8 @@ def build_unified_dataset(
     inspect the downloaded paths first with `!find <root> -maxdepth 2`.
     """
     output_root = Path(output_root)
-    real_names = {"real", "authentic", "human", "paintings", "real_images"}
-    ai_names = {"ai", "fake", "synthetic", "ai_generated", "generated"}
+    real_names = {"real", "realart"}
+    ai_names = {"ai", "aiartdata"}
 
     sources = [p for p in (drive_root, kaggle_root) if p]
     real_dirs, ai_dirs = [], []

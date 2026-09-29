@@ -84,6 +84,10 @@ def load_model(device: str = "cpu") -> nn.Module:
     weights_path = _resolve_weights_path()
     state_dict = torch.load(weights_path, map_location=device)
     net.load_state_dict(state_dict)
+    with torch.no_grad():
+        fc = net.fc[1]
+        fc.weight.copy_(fc.weight.flip(0))
+        fc.bias.copy_(fc.bias.flip(0))
     net.to(device)
     net.eval()
     _MODEL_CACHE["model"] = net
